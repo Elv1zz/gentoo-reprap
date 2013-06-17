@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit distutils
+EAPI=4
+# inherit distutils
 
 DESCRIPTION="Skeinforge from ReplicatorG"
 HOMEPAGE="http://replicat.org"
@@ -10,29 +11,23 @@ SRC_URI="http://fabmetheus.crsndoo.com/files/${PV}_reprap_python_beanshell.zip"
 
 LICENSE="GPL"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DEPEND=">=dev-python/python.2.6.0"
+DEPEND="dev-lang/python:2.7
+	x11-apps/reprappro
+	app-arch/unzip"
 RDEPEND="${DEPEND}"
 
-#PYTHON_USE_WITH="xml"
+# S=${WORKDIR}
 
-pkg_setup() {
-	#python_pkg_setup
-	echo
+src_unpack() {
+	mkdir -p ${S}
+	cd ${S}
+	unpack ${A}
 }
-
-src_compile() {
-	echo
-}
-
 
 src_install() {
-	cd skeinforge-40
-	dodir /opt /opt/skeinforge 
-	mv __init__.py fabmetheus.kdevelop  fabmetheus_utilities \
-	skeinforge_application  test.stl \
-	documentation  fabmetheus.kdevses   models terminal.sh \
-	"${D}/opt/skeinforge/"
+	dodir /opt /opt/reprappro/skeinforge 
+	cp -R ${S}/* "${D}opt/reprappro/skeinforge/"
 }
