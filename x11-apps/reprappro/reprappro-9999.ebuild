@@ -13,9 +13,11 @@ HOMEPAGE="https://github.com/reprappro/Software"
 SRC_URI="https://github.com/reprappro/Software/archive/master.zip"
 
 IUSE=""
-RDEPEND=">=dev-python/wxpython-2.8.12.1
+RDEPEND="dev-lang/python:2.7[tk]
+	>=dev-python/wxpython-2.8.12.1
 	>=dev-python/pyserial-2.6-r1
-	>=dev-python/pyglet-1.1.4"
+	>=dev-python/pyglet-1.1.4
+	app-arch/unzip"
 DEPEND="${RDEPEND}"
 SLOT=0
 
