@@ -15,11 +15,10 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="dev-lang/python:2.7
-	x11-apps/reprappro
 	app-arch/unzip"
 RDEPEND="${DEPEND}"
 
-# S=${WORKDIR}
+MERGE_TYPE="binary"
 
 src_unpack() {
 	mkdir -p ${S}
@@ -28,6 +27,6 @@ src_unpack() {
 }
 
 src_install() {
-	dodir /opt /opt/reprappro/skeinforge 
-	cp -R ${S}/* "${D}opt/reprappro/skeinforge/"
+	dodir /opt /opt/skeinforge 
+	cp -R ${S}/* "${D}opt/skeinforge/"
 }
